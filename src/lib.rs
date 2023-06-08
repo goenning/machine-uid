@@ -130,7 +130,7 @@ mod machine_id {
 
     /// Return machine id
     pub fn get_machine_id() -> Result<String, Box<dyn Error>> {
-        let output = Command::new("ioreg")
+        let output = Command::new("/usr/sbin/ioreg")
             .args(&["-rd1", "-c", "IOPlatformExpertDevice"])
             .output()?;
         let content = String::from_utf8_lossy(&output.stdout);
